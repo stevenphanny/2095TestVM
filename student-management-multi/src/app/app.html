@@ -1,0 +1,79 @@
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-xl-8">
+      <!-- App Header -->
+      <div class="text-center mb-4">
+        <h1 class="display-4 text-primary">
+          <i class="fas fa-graduation-cap me-3"></i>
+          <span class="angular-highlight">Angular 20.2.2</span> 
+          Student Management
+        </h1>
+        <p class="lead text-muted">
+          Multi-Component Architecture with Services & Dependency Injection
+        </p>
+        <hr class="my-4">
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="row">
+        <!-- Left Column: Add Student Form -->
+        <div class="col-12" [class.col-lg-6]="editingStudentId() === null" [class.col-lg-4]="editingStudentId() !== null">
+          <app-add-student></app-add-student>
+        </div>
+
+        <!-- Middle Column: Update Student Form (conditional) -->
+        @if (editingStudentId() !== null) {
+          <div class="col-12 col-lg-4 mb-4">
+            <app-update-student 
+              [studentId]="editingStudentId()"
+              (studentUpdated)="onStudentUpdated()"
+              (cancelEdit)="onCancelEdit()">
+            </app-update-student>
+          </div>
+        }
+
+        <!-- Right Column: Students List -->
+        <div class="col-12" [class.col-lg-6]="editingStudentId() === null" [class.col-lg-4]="editingStudentId() !== null">
+          <app-list-students 
+            (editStudent)="onEditStudent($event)">
+          </app-list-students>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="card border-0 bg-light">
+            <div class="card-body text-center">
+              <div class="row align-items-center">
+                <div class="col-md-4">
+                  <h6 class="mb-0">
+                    <i class="fas fa-puzzle-piece me-2 text-primary"></i>
+                    Multi-Component Architecture
+                  </h6>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="mb-0">
+                    <i class="fas fa-exchange-alt me-2 text-success"></i>
+                    Service-Based Communication
+                  </h6>
+                </div>
+                <div class="col-md-4">
+                  <h6 class="mb-0">
+                    <i class="fas fa-signal me-2 text-info"></i>
+                    Angular Signals & Reactive State
+                  </h6>
+                </div>
+              </div>
+              <hr class="my-3">
+              <small class="text-muted">
+                <i class="fas fa-code me-1"></i>
+                Built with Angular 20.2.2 | Standalone Components | Bootstrap 5
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,151 @@
+@if (studentId() !== null && editStudent.id > 0) {
+  <div class="card">
+    <div class="card-header">
+      <h4 class="mb-0">
+        <i class="fas fa-user-edit me-2"></i>Edit Student
+        <span class="badge bg-light text-dark ms-2">ID: {{ editStudent.id }}</span>
+      </h4>
+    </div>
+    <div class="card-body">
+      <form #updateForm="ngForm" (ngSubmit)="updateStudent()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="editStudentId" class="form-label">
+                <strong>Student ID</strong> <span class="text-danger">*</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="editStudentId"
+                name="editStudentId"
+                [(ngModel)]="editStudent.studentId"
+                placeholder="e.g., STU003"
+                required
+                #editStudentIdInput="ngModel">
+              <div class="form-text">Must be unique across all students</div>
+              @if (editStudentIdInput.invalid && editStudentIdInput.touched) {
+                <div class="text-danger small">Student ID is required</div>
+              }
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="editYear" class="form-label">
+                <strong>Year</strong> <span class="text-danger">*</span>
+              </label>
+              <select 
+                class="form-select" 
+                id="editYear"
+                name="editYear"
+                [(ngModel)]="editStudent.year"
+                required>
+                <option [value]="1">Year 1</option>
+                <option [value]="2">Year 2</option>
+                <option [value]="3">Year 3</option>
+                <option [value]="4">Year 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="editFirstName" class="form-label">
+                <strong>First Name</strong> <span class="text-danger">*</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="editFirstName"
+                name="editFirstName"
+                [(ngModel)]="editStudent.firstName"
+                placeholder="Enter first name"
+                required
+                #editFirstNameInput="ngModel">
+              @if (editFirstNameInput.invalid && editFirstNameInput.touched) {
+                <div class="text-danger small">First name is required</div>
+              }
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="editLastName" class="form-label">
+                <strong>Last Name</strong> <span class="text-danger">*</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="editLastName"
+                name="editLastName"
+                [(ngModel)]="editStudent.lastName"
+                placeholder="Enter last name"
+                required
+                #editLastNameInput="ngModel">
+              @if (editLastNameInput.invalid && editLastNameInput.touched) {
+                <div class="text-danger small">Last name is required</div>
+              }
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="editEmail" class="form-label">
+            <strong>Email Address</strong> <span class="text-danger">*</span>
+          </label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="editEmail"
+            name="editEmail"
+            [(ngModel)]="editStudent.email"
+            placeholder="Enter email address"
+            required
+            email
+            #editEmailInput="ngModel">
+          @if (editEmailInput.invalid && editEmailInput.touched) {
+            <div class="text-danger small">
+              @if (editEmailInput.errors?.['required']) {
+                Email is required
+              } @else if (editEmailInput.errors?.['email']) {
+                Please enter a valid email address
+              }
+            </div>
+          }
+        </div>
+        
+        @if (hasChanges()) {
+          <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            You have unsaved changes. Make sure to save or cancel your edits.
+          </div>
+        }
+        
+        <div class="d-flex gap-2 justify-content-end">
+          <button 
+            type="button" 
+            class="btn btn-outline-secondary"
+            (click)="resetForm()"
+            [disabled]="!hasChanges()">
+            <i class="fas fa-undo me-2"></i>Reset Changes
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-secondary"
+            (click)="onCancel()">
+            <i class="fas fa-times me-2"></i>Cancel
+          </button>
+          <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="!updateForm.form.valid || !hasChanges()">
+            <i class="fas fa-save me-2"></i>Save Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

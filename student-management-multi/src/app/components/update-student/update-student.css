@@ -1,0 +1,116 @@
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+  color: #212529;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.card-header h4 {
+  color: #212529;
+  font-weight: 600;
+}
+
+.card-header .badge {
+  font-size: 0.8rem;
+}
+
+.form-label {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  border: 2px solid #ecf0f1;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #1e7e34, #155724);
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.btn-success:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-outline-secondary {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-outline-secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.alert-warning {
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  color: #856404;
+  border-left: 4px solid #ffc107;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+}
+
+.form-text {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+/* Animation for form validation */
+.form-control.ng-valid.ng-touched {
+  border-color: #28a745;
+}
+
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+/* Button group spacing */
+.d-flex.gap-2 > * {
+  margin-right: 0.5rem;
+}
+
+.d-flex.gap-2 > *:last-child {
+  margin-right: 0;
+}

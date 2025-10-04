@@ -1,0 +1,142 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="mb-0">
+      <i class="fas fa-user-plus me-2"></i>Add New Student
+    </h4>
+  </div>
+  
+  <div class="card-body">
+    <form #studentForm="ngForm" (ngSubmit)="addStudent()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+
+            <!-- Student ID -->
+            <label for="studentId" class="form-label">
+              <strong>Student ID</strong> <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="studentId"
+              name="studentId"
+              [(ngModel)]="newStudent.studentId"
+              placeholder="e.g., STU003"
+              required
+              #studentIdInput="ngModel">
+            <div class="form-text">Must be unique across all students</div>
+            @if (studentIdInput.invalid && studentIdInput.touched) {
+              <div class="text-danger small">Student ID is required</div>
+            }
+          </div>
+        </div>
+
+        <!-- Year -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="year" class="form-label">
+              <strong>Year</strong> <span class="text-danger">*</span>
+            </label>
+            <select 
+              class="form-select" 
+              id="year"
+              name="year"
+              [(ngModel)]="newStudent.year"
+              required>
+              <option [value]="1">Year 1</option>
+              <option [value]="2">Year 2</option>
+              <option [value]="3">Year 3</option>
+              <option [value]="4">Year 4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <!-- First name -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">
+              <strong>First Name</strong> <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="firstName"
+              name="firstName"
+              [(ngModel)]="newStudent.firstName"
+              placeholder="Enter first name"
+              required
+              #firstNameInput="ngModel">
+            @if (firstNameInput.invalid && firstNameInput.touched) {
+              <div class="text-danger small">First name is required</div>
+            }
+          </div>
+        </div>
+        
+        <!-- Last name -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="lastName" class="form-label">
+              <strong>Last Name</strong> <span class="text-danger">*</span>
+            </label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="lastName"
+              name="lastName"
+              [(ngModel)]="newStudent.lastName"
+              placeholder="Enter last name"
+              required
+              #lastNameInput="ngModel">
+            @if (lastNameInput.invalid && lastNameInput.touched) {
+              <div class="text-danger small">Last name is required</div>
+            }
+          </div>
+        </div>
+      </div>
+      
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          <strong>Email Address</strong> <span class="text-danger">*</span>
+        </label>
+        <input 
+          type="email" 
+          class="form-control" 
+          id="email"
+          name="email"
+          [(ngModel)]="newStudent.email"
+          placeholder="Enter email address"
+          required
+          email
+          #emailInput="ngModel">
+        @if (emailInput.invalid && emailInput.touched) {
+          <div class="text-danger small">
+            @if (emailInput.errors?.['required']) {
+              Email is required
+            } @else if (emailInput.errors?.['email']) {
+              Please enter a valid email address
+            }
+          </div>
+        }
+      </div>
+      
+      <!-- Submit -->
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="!studentForm.form.valid">
+          <i class="fas fa-plus me-2"></i>Add Student
+        </button>
+        <button 
+          type="button" 
+          class="btn btn-secondary"
+          (click)="resetForm()">
+          <i class="fas fa-undo me-2"></i>Reset Form
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

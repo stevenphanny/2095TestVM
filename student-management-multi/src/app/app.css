@@ -1,0 +1,118 @@
+/* Global App Styles */
+.container-fluid {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.display-4 {
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-primary {
+  color: #2c3e50 !important;
+}
+
+.angular-highlight {
+  background: linear-gradient(135deg, #dd0031, #c3002f);
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.lead {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #dd0031, transparent);
+}
+
+/* Component Spacing */
+.col-12 {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments for component layout */
+@media (min-width: 992px) {
+  .col-lg-4, .col-lg-6 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Footer styling */
+.card.border-0.bg-light {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff) !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card.border-0.bg-light .card-body {
+  padding: 1.5rem;
+}
+
+.card.border-0.bg-light h6 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.card.border-0.bg-light .text-muted {
+  font-size: 0.9rem;
+}
+
+/* Animation for component transitions */
+app-update-student {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Ensure consistent card spacing */
+app-add-student,
+app-list-students,
+app-update-student {
+  display: block;
+  height: fit-content;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card.border-0.bg-light .row {
+    text-align: center;
+  }
+  
+  .card.border-0.bg-light .col-md-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .card.border-0.bg-light .col-md-4:last-child {
+    margin-bottom: 0;
+  }
+}
